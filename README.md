@@ -10,9 +10,11 @@ run PerfMon_Setup.ps1
 run PerfMon_Fix_Header.ps1
   #to standardize header of file  
 Open Perfmon_Dashboard.pbix and load file 
-  #to analyze data 
+  #to analyze data
+  
 ```
-##Process description
+
+## Process description
 ```flow
 st=>start: create collector 
 
