@@ -1,8 +1,6 @@
 # PerfMon-collector
 PowerShell script to create and collect configurable list of performance counters, extract it and PowerBI report to show collected data
 
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
-
 ![](https://github.com/Petar-T/PerfMon-collector/blob/master/Docs/CaptureMain.JPG)
 ## Usage
 
