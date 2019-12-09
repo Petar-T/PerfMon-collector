@@ -10,6 +10,8 @@ foobar.pluralize('word') # returns 'words'
 foobar.pluralize('goose') # returns 'geese'
 foobar.singularize('phenomena') # returns 'phenomenon'
 ```
+## Detailed HowTo
+Use the step by step instructions file  [instruction](https://pip.pypa.io/en/stable/) to install foobar.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
