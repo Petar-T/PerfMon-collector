@@ -37,7 +37,3 @@ Use the step by step instructions file  [instruction](https://github.com/Petar-T
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="http://flowchart.js.org/flowchart-latest.js"></script>
