@@ -15,9 +15,9 @@ Open Perfmon_Dashboard.pbix and load file
 ```
 
 ## Process description
+
 ```flow
 st=>start: create collector 
-
 op=>operation: collect data (few hrs)
 cond=>condition: Successful Yes or No?
 op2=>operation: extract file  
