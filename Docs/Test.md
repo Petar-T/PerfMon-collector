@@ -1,107 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>flowchart.js · Playground</title>
-        <style type="text/css">
-          .end-element { fill : #FFCCFF; }
-        </style>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="http://flowchart.js.org/flowchart-latest.js"></script>
-        <!-- <script src="../release/flowchart.min.js"></script> -->
-        <script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.6.0/themes/prism-tomorrow.css"/>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: hsl(0, 0%, 90%);
+}
+pre {
+  color: hsl(0, 0%, 90%);
+  background: hsl(0, 0%, 10%);
+  padding: 10px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  margin-bottom: 0;
+}
+.render-js {
+  background: white;
+  border: 2px solid hsl(0, 0%, 10%);
+  padding: 10px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+</style>
 
-            window.onload = function () {
-                var btn = document.getElementById("run"),
-                    cd = document.getElementById("code"),
-                    chart;
+# Actually render your code blocks
 
-                (btn.onclick = function () {
-                    var code = cd.value;
+This is my markdown file.
 
-                    if (chart) {
-                      chart.clean();
-                    }
+```render
+DOM_NODE.innerHTML = 'Hey there!'
+```
 
-                    chart = flowchart.parse(code);
-                    chart.drawSVG('canvas', {
-                      // 'x': 30,
-                      // 'y': 50,
-                      'line-width': 3,
-                      'maxWidth': 3,//ensures the flowcharts fits within a certian width
-                      'line-length': 50,
-                      'text-margin': 10,
-                      'font-size': 14,
-                      'font': 'normal',
-                      'font-family': 'Helvetica',
-                      'font-weight': 'normal',
-                      'font-color': 'black',
-                      'line-color': 'black',
-                      'element-color': 'black',
-                      'fill': 'white',
-                      'yes-text': 'yes',
-                      'no-text': 'no',
-                      'arrow-end': 'block',
-                      'scale': 1,
-                      'symbols': {
-                        'start': {
-                          'font-color': 'red',
-                          'element-color': 'green',
-                          'fill': 'yellow'
-                        },
-                        'end':{
-                          'class': 'end-element'
-                        }
-                      },
-                      'flowstate' : {
-                        'past' : { 'fill' : '#CCCCCC', 'font-size' : 12},
-                        'current' : {'fill' : 'yellow', 'font-color' : 'red', 'font-weight' : 'bold'},
-                        'future' : { 'fill' : '#FFFF99'},
-                        'request' : { 'fill' : 'blue'},
-                        'invalid': {'fill' : '#444444'},
-                        'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
-                        'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
-                      }
-                    });
+What About babel?
+-----------------
 
-                    $('[id^=sub1]').click(function(){
-                      alert('info here');
-                    });
-                })();
+If you want to use babel, make sure to add babel-standalone like this file does at the top:
 
-            };
+```render-babel
+class Demo extends React.Component {
+  componentDidMount() {
+    setInterval(() => this.forceUpdate(), 500)
+  }
+  render() {
+    return <h1>This is cool times {Date.now()}</h1>
+  }
+}
 
-            function myFunction(event, node) {
-              console.log("You just clicked this node:", node);
-            }
-            
-        </script>
-    </head>
-    <body>
-        <div><textarea id="code" style="width: 100%;" rows="11">
-st=>start: Start|past:>http://www.google.com[blank]
-e=>end: End:>http://www.google.com
-op1=>operation: My Operation|past:$myFunction
-op2=>operation: Stuff|current
-sub1=>subroutine: My Subroutine|invalid
-cond=>condition: Yes
-or No?|approved:>http://www.google.com
-c2=>condition: Good idea|rejected
-io=>inputoutput: catch something...|request
-para=>parallel: parallel tasks
+ReactDOM.render(
+  <Demo/>,
+  DOM_NODE
+)
+```
 
-st->op1(right)->cond
-cond(yes, right)->c2
-cond(no)->para
-c2(true)->io->e
-c2(false)->e
+Isn't that
 
-para(path1, bottom)->sub1(left)->op1
-para(path2, right)->op2->e
+- Cool
+- Awesome
+- Incredibly inflexible?
 
-st@>op1({"stroke":"Red"})@>cond({"stroke":"Red","stroke-width":6,"arrow-end":"classic-wide-long"})@>c2({"stroke":"Red"})@>op2({"stroke":"Red"})@>e({"stroke":"Red"})</textarea></div>
-        <div><button id="run" type="button">Run</button></div>
-        <div id="canvas"></div>
-    </body>
-</html>
+Yes.
+
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@15.6.1/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.min.js"></script>
