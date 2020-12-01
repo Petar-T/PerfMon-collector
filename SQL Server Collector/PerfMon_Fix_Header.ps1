@@ -2,7 +2,7 @@ $fldr=$PSScriptRoot
 $FirsColValue="Date_Time"
 $DefInst="SQLServer"
 $MakeFileZip=1
-$DeleteSourceCopy=1
+$DeleteSourceCopy=0
 
 $FileName =$fldr + "\SQLPerfMon-Server_201912021442.csv"
 $NewFileName =$fldr + "\PerfMon_SourceData.csv"
