@@ -1,18 +1,24 @@
 $fldr=$PSScriptRoot
 $FirsColValue="Date_Time"
 $DefInst="SQLServer"
+$MakeFileZip=1
+$DeleteSourceCopy=1
 
 $FileName =$fldr + "\SQLPerfMon-Server_201912021442.csv"
 $NewFileName =$fldr + "\PerfMon_SourceData.csv"
 $BackupFileName =$fldr + "\TsvCopy.zip"
 
+if ($MakeFileZip -eq 1)
+  {
+  if (-not (test-path $BackupFileName))
+    {$opts = @{'Path' = $FileName; 'DestinationPath' = $BackupFileName }}
+  else
+    {$opts = @{'Path' = $FileName; 'DestinationPath' = $BackupFileName; 'Confirm'=$true ; 'Update'=$true  }}
 
-if (-not (test-path $BackupFileName))
-  {$opts = @{'Path' = $FileName; 'DestinationPath' = $BackupFileName }}
-else
-  {$opts = @{'Path' = $FileName; 'DestinationPath' = $BackupFileName; 'Confirm'=$true ; 'Update'=$true  }}
-
- Compress-Archive @opts
+    Compress-Archive @opts
+    if ($DeleteSourceCopy -eq 1) {Remove-Item –path $FileName }
+   }
+    
 
 $HeaderRow = Get-Content $FileName -First 1
 $Split1=$HeaderRow|%{$_.split('"')[1]}
